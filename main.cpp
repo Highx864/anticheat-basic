@@ -2,7 +2,7 @@
 #include <gdiplus.h>
 #include <iostream>
 #include <tlhelp32.h>
-#include "heximage.h" //File รูปภาพ มาจาก Hex จากโปรแกรม Hxd
+#include "heximage.h" //File รรยปร€ร’ยพ รร’ยจร’ยก Hex ยจร’ยกรขยปรรกยกรร Hxd
 #include "xor.h" // Protect String
 #pragma comment (lib, "Gdiplus.lib")
 #pragma comment (lib, "Ole32.lib")
@@ -42,7 +42,7 @@ Bitmap* LoadImageFromHex(const unsigned char* data, size_t size) {
 }
 
 void DetectCheat(HWND hWnd) {
-    MessageBox(hWnd, "Cheat detected!", "Warning", MB_OK | MB_ICONEXCLAMATION);
+    MessageBox(hWnd, xorstr_("Cheat detected!"), xorstr_("Warning"), MB_OK | MB_ICONEXCLAMATION);
     PostQuitMessage(0);  
 }
 
@@ -85,14 +85,14 @@ BOOL DetectByTitle(HWND hWnd) {
         DetectCheat(hWnd);
         return TRUE;
     }
-    //สามารถเพิ่ม Title ที่ต้องการ Detect ได้ตรงนี้
+    //รร’รร’รยถร ยพร”รจร Title ยทร•รจยตรฉรยงยกร’ร Detect รคยดรฉยตรยงยนร•รฉ
     return FALSE;  
 }
 bool IsCheatProcessRunning(HWND hWnd) {
     const char* cheatProcesses[] = {
-        "cheatengine.exe",
-        "ida64.exe",
-        "processhacker.exe" //สามารถเพิ่มโปรแกรมที่ต้องการ Detect ได้ตรงนี้
+        xorstr_("cheatengine.exe"),
+        xorstr_("ida64.exe"),
+        xorstr_("processhacker.exe") //รร’รร’รยถร ยพร”รจรรขยปรรกยกรรยทร•รจยตรฉรยงยกร’ร Detect รคยดรฉยตรยงยนร•รฉ
     };
 
     HANDLE hSnapshot = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
